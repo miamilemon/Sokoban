@@ -19,7 +19,7 @@ function Menu(){
                   <button onClick={Gra(poziom)} className="rounded-xl bg-gradient-to-b from-teal-300 to-teal-500 px-5 py-3 text-base mb-3 font-medium text-white transition duration-200 hover:shadow-lg hover:shadow-teal-700">
                       Graj
                   </button>
-                  <button className="rounded-xl bg-gradient-to-b from-teal-500 to-teal-700 px-5 py-3 text-base mb-3 font-medium text-white transition duration-200 hover:shadow-lg hover:shadow-teal-800">
+                  <button onClick={()=>window.open("https://github.com/miamilemon/sokoban/blob/main/README.md", "_blank")} className="rounded-xl bg-gradient-to-b from-teal-500 to-teal-700 px-5 py-3 text-base mb-3 font-medium text-white transition duration-200 hover:shadow-lg hover:shadow-teal-800">
                       O grze
                   </button>
               </div>
