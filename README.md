@@ -9,10 +9,11 @@ Gracz nie może przechodzić nad ścianami i blokami. W zależności od wydania,
 ## Sokoban według mnie
 
 Według moich założeń:
-- Gra liczy czas oraz ilość kroków wykonanych przez gracza
+- Gra liczy czas(tak naprawde nie liczy) oraz ilość kroków wykonanych przez gracza
 - Gra zapisuje kroki i wyniki gracza na danej mapie do local storage
 - Zakładka wyniki w menu pokazuje najlepsze wyniki na każdej mapie
 - Gracz nie może przesunąć dwóch bloków jednocześnie
 - Gracz porusza się za pomocą strzałek lub WASD na klawiaturze
 - Gracz może popychać pudła, ale nie może ich ciągnąć
-- Mapa 8x8
+- Mapy 8x8
+- 2 bloki do odstawienia do 2 punktów
