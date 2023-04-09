@@ -96,7 +96,7 @@ function Menu(){
                       Sokoban
                   </h4>
 
-                  <button onClick={()=>Gra(0)} className="rounded-xl bg-gradient-to-b from-teal-100 to-teal-300 px-5 py-3 text-base mb-3 font-medium text-white transition duration-200 hover:shadow-lg hover:shadow-teal-700">
+                  <button onClick={()=>WybierzPoziom()} className="rounded-xl bg-gradient-to-b from-teal-100 to-teal-300 px-5 py-3 text-base mb-3 font-medium text-white transition duration-200 hover:shadow-lg hover:shadow-teal-700">
                       Graj
                   </button>
                   <button onClick={()=>ListaWynikow()} className="rounded-xl bg-gradient-to-b from-teal-300 to-teal-500 px-5 py-3 text-base mb-3 font-medium text-white transition duration-200 hover:shadow-lg hover:shadow-teal-700">
@@ -189,7 +189,39 @@ function ListaWynikow(){
 }
 
 function WybierzPoziom(){
+    root.render(
+        <div className="flex flex-col justify-center items-center bg-teal-800 h-[100vh]">
+            <div className=" relative flex flex-col rounded-[20px] max-w-[300px] bg-teal-900 bg-clip-border shadow-3xl shadow-shadow-xl w-full !p-6 3xl:p-![18px] undefined">
+              <div className="h-full w-full mt-8 flex flex-col my-6"> 
+                  <h4 className="pb-8 self-center drop-shadow-xl text-2xl font-bold text-white">
+                      Sokoban
+                  </h4>
 
+                  <button onClick={()=>Gra(0)} className="rounded-xl bg-gradient-to-b from-teal-300 to-teal-500 px-5 py-3 text-base mb-3 font-medium text-white transition duration-200 hover:shadow-lg hover:shadow-teal-700">
+                      Poziom 1
+                  </button>
+                  <button onClick={()=>Gra(1)} className="rounded-xl bg-gradient-to-b from-teal-300 to-teal-500 px-5 py-3 text-base mb-3 font-medium text-white transition duration-200 hover:shadow-lg hover:shadow-teal-700">
+                      Poziom 2
+                  </button>
+                  <button onClick={()=>Gra(2)} className="rounded-xl bg-gradient-to-b from-teal-300 to-teal-500 px-5 py-3 text-base mb-3 font-medium text-white transition duration-200 hover:shadow-lg hover:shadow-teal-800">
+                      Poziom 3
+                  </button>
+                  <button onClick={()=>Gra(3)} className="rounded-xl bg-gradient-to-b from-teal-300 to-teal-500 px-5 py-3 text-base mb-3 font-medium text-white transition duration-200 hover:shadow-lg hover:shadow-teal-800">
+                      Poziom 4
+                  </button>
+                  <button onClick={()=>Gra(4)} className="rounded-xl bg-gradient-to-b from-teal-300 to-teal-500 px-5 py-3 text-base mb-3 font-medium text-white transition duration-200 hover:shadow-lg hover:shadow-teal-800">
+                      Poziom 5
+                  </button>
+                  <button onClick={()=>Menu()} className="rounded-xl bg-gradient-to-b from-teal-500 to-teal-700 px-5 py-3 text-base mb-3 font-medium text-white transition duration-200 hover:shadow-lg hover:shadow-teal-800">
+                      Powrót
+                  </button>
+              </div>
+            </div>
+            <h6 className="pt-32 self-bottom text-xl text-white">
+            Made by: <a className="hover:text-gray-200" href="https://github.com/miamilemon" target="_blank">Nikodem M</a>
+            </h6>
+        </div>
+    );
 }
 
 
@@ -214,7 +246,7 @@ function Gra(poziom) {
 }
 
 function App() {
-    Gra(4)
+    Menu();
 }
 
 export default App;
