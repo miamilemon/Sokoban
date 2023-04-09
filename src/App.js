@@ -1,5 +1,9 @@
-import logo from './logo.svg';
 import './App.css';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import * as ReactDOMClient from 'react-dom/client';
+const container = document.getElementById("root");
+const root = ReactDOMClient.createRoot(container);
 
 var poziom = "";
 
@@ -9,15 +13,18 @@ function Menu(){
     }else{
         poziom = localStorage.getItem("poziom");
     }
-    return(
+    root.render(
         <div className="flex flex-col justify-center items-center bg-teal-800 h-[100vh]">
             <div className=" relative flex flex-col rounded-[20px] max-w-[300px] bg-teal-900 bg-clip-border shadow-3xl shadow-shadow-xl flex flex-col w-full !p-6 3xl:p-![18px] undefined">
               <div className="h-full w-full mt-5 flex flex-col my-12"> 
                   <h4 className="pb-8 self-center drop-shadow-xl text-xl font-bold text-white">
                       Sokoban
                   </h4>
-                  <button onClick={Gra(poziom)} className="rounded-xl bg-gradient-to-b from-teal-300 to-teal-500 px-5 py-3 text-base mb-3 font-medium text-white transition duration-200 hover:shadow-lg hover:shadow-teal-700">
+                  <button onClick={()=>Gra(poziom)} className="rounded-xl bg-gradient-to-b from-teal-100 to-teal-300 px-5 py-3 text-base mb-3 font-medium text-white transition duration-200 hover:shadow-lg hover:shadow-teal-700">
                       Graj
+                  </button>
+                  <button onClick={()=>ListaWynikow()} className="rounded-xl bg-gradient-to-b from-teal-300 to-teal-500 px-5 py-3 text-base mb-3 font-medium text-white transition duration-200 hover:shadow-lg hover:shadow-teal-700">
+                      Wyniki
                   </button>
                   <button onClick={()=>window.open("https://github.com/miamilemon/sokoban/blob/main/README.md", "_blank")} className="rounded-xl bg-gradient-to-b from-teal-500 to-teal-700 px-5 py-3 text-base mb-3 font-medium text-white transition duration-200 hover:shadow-lg hover:shadow-teal-800">
                       O grze
@@ -25,9 +32,44 @@ function Menu(){
               </div>
             </div>
             <h6 className="pt-32 self-bottom text-xl text-white">
-            Made by: <a className="hover:text-gray-200" href="github.com/miamilemon">Nikodem M</a>
+            Made by: <a className="hover:text-gray-200" href="https://github.com/miamilemon" target="_blank">Nikodem M</a>
             </h6>
         </div>
+    );
+}
+
+function ListaWynikow(){
+    root.render(
+            <div className="flex flex-col justify-center items-center bg-teal-800 h-[100vh]">
+                <div className=" relative flex flex-col rounded-[20px] max-w-[300px] bg-teal-900 bg-clip-border shadow-3xl shadow-shadow-xl flex flex-col w-full !p-6 3xl:p-![18px] undefined">
+                  <div className="h-full w-full mt-5 flex flex-col my-12"> 
+                      <h1 className="pb-8 self-center drop-shadow-xl text-lg font-bold text-white">
+                          Wyniki
+                      </h1>
+                      <h6 className="pb-8 self-center drop-shadow-xl text-md font-bold text-white">
+                        Poziom 1.
+                      </h6>
+                      <h6 className="pb-8 self-center drop-shadow-xl text-md font-bold text-white">
+                        Poziom 2.
+                      </h6>
+                      <h6 className="pb-8 self-center drop-shadow-xl text-md font-bold text-white">
+                        Poziom 3.
+                      </h6>
+                      <h6 className="pb-8 self-center drop-shadow-xl text-md font-bold text-white">
+                        Poziom 4.
+                      </h6>
+                      <h6 className="pb-8 self-center drop-shadow-xl text-md font-bold text-white">
+                        Poziom 5.
+                      </h6>
+                      <button onClick={()=>Menu()} className="rounded-xl bg-gradient-to-b from-teal-500 to-teal-700 px-5 py-3 text-base mb-3 font-medium text-white transition duration-200 hover:shadow-lg hover:shadow-teal-800">
+                          Powrót
+                      </button>
+                  </div>
+                </div>
+                <h6 className="pt-32 self-bottom text-xl text-white">
+                Made by: <a className="hover:text-gray-200" href="https://github.com/miamilemon" target="_blank">Nikodem M</a>
+                </h6>
+            </div>
     );
 }
 
@@ -38,9 +80,7 @@ function Gra() {
 }
 
 function App() {
-  return (
-    Menu()
-  );
+    Menu();
 }
 
 export default App;
