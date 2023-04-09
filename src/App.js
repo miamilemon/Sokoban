@@ -16,19 +16,47 @@ const Mapa = [
         [1, 1, 1, 4, 0, 0, 0, 1],
         [1, 3, 1, 1, 1, 2, 0, 1],
         [1, 0, 0, 0, 0, 0, 0, 1],
+        [1, 1, 1, 1, 1, 1, 1, 1]
+    ],
+    [
         [1, 1, 1, 1, 1, 1, 1, 1],
+        [1, 3, 1, 4, 0, 0, 0, 1],
+        [1, 0, 1, 1, 1, 0, 0, 1],
+        [1, 0, 0, 1, 0, 0, 1, 1],
+        [1, 0, 2, 0, 0, 0, 1, 1],
+        [1, 0, 0, 1, 1, 2, 1, 1],
+        [1, 0, 0, 0, 4, 0, 1, 1],
+        [1, 1, 1, 1, 1, 1, 1, 1]
     ],
     [
-
+        [1, 1, 1, 1, 1, 1, 1, 1],
+        [1, 1, 1, 1, 1, 1, 1, 1],
+        [1, 1, 1, 1, 1, 1, 1, 1],
+        [1, 4, 3, 0, 0, 0, 1, 1],
+        [1, 0, 1, 0, 2, 2, 0, 1],
+        [1, 4, 0, 0, 0, 0, 0, 1],
+        [1, 1, 1, 1, 1, 1, 1, 1],
+        [1, 1, 1, 1, 1, 1, 1, 1]
     ],
     [
-
+        [1, 1, 1, 1, 1, 1, 1, 1],
+        [1, 1, 0, 0, 0, 0, 0, 1],
+        [1, 0, 0, 2, 2, 0, 0, 1],
+        [1, 0, 0, 0, 0, 0, 0, 1],
+        [1, 0, 3, 1, 1, 0, 1, 1],
+        [1, 0, 1, 1, 0, 0, 0, 1],
+        [1, 4, 0, 1, 4, 0, 0, 1],
+        [1, 1, 1, 1, 1, 1, 1, 1]
     ],
     [
-
-    ],
-    [
-
+        [1, 1, 1, 1, 1, 1, 1, 1],
+        [1, 4, 1, 4, 0, 0, 0, 1],
+        [1, 0, 1, 1, 1, 0, 0, 1],
+        [1, 0, 0, 0, 0, 2, 0, 1],
+        [1, 0, 0, 1, 0, 0, 1, 1],
+        [1, 0, 2, 1, 1, 1, 1, 1],
+        [1, 0, 0, 0, 0, 3, 0, 1],
+        [1, 1, 1, 1, 1, 1, 1, 1]
     ]
 ]
 
@@ -42,7 +70,7 @@ const Template = [
 
 const renderMapy = (bloki) => {
     return bloki.map(blok => <div className={blok}></div>)
-  }
+}
 
 function RenderMapy(mapa){
     var string = [];
@@ -68,7 +96,7 @@ function Menu(){
                       Sokoban
                   </h4>
 
-                  <button onClick={()=>WybierzPoziom()} className="rounded-xl bg-gradient-to-b from-teal-100 to-teal-300 px-5 py-3 text-base mb-3 font-medium text-white transition duration-200 hover:shadow-lg hover:shadow-teal-700">
+                  <button onClick={()=>Gra(0)} className="rounded-xl bg-gradient-to-b from-teal-100 to-teal-300 px-5 py-3 text-base mb-3 font-medium text-white transition duration-200 hover:shadow-lg hover:shadow-teal-700">
                       Graj
                   </button>
                   <button onClick={()=>ListaWynikow()} className="rounded-xl bg-gradient-to-b from-teal-300 to-teal-500 px-5 py-3 text-base mb-3 font-medium text-white transition duration-200 hover:shadow-lg hover:shadow-teal-700">
@@ -164,8 +192,9 @@ function WybierzPoziom(){
 
 }
 
+
 function Gra(poziom) {
-    var mapa = Mapa[0]
+    var mapa = Mapa[poziom]
     root.render(
         <div className="flex flex-col justify-center items-center bg-teal-800 h-[100vh]">
             <div className="flex flex-row items-start text-left justify-start max-w-[450px] w-full">
@@ -185,8 +214,7 @@ function Gra(poziom) {
 }
 
 function App() {
-    //Menu();
-    Gra(0);
+    Gra(4)
 }
 
 export default App;
