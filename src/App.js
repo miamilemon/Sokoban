@@ -192,7 +192,7 @@ function WybierzPoziom(){
     root.render(
         <div className="flex flex-col justify-center items-center bg-teal-800 h-[100vh]">
             <div className=" relative flex flex-col rounded-[20px] max-w-[300px] bg-teal-900 bg-clip-border shadow-3xl shadow-shadow-xl w-full !p-6 3xl:p-![18px] undefined">
-              <div className="h-full w-full mt-8 flex flex-col my-6"> 
+              <div className="h-full w-full flex flex-col my-6"> 
                   <h4 className="pb-8 self-center drop-shadow-xl text-2xl font-bold text-white">
                       Sokoban
                   </h4>
@@ -217,21 +217,23 @@ function WybierzPoziom(){
                   </button>
               </div>
             </div>
-            <h6 className="pt-32 self-bottom text-xl text-white">
+            <h6 className="pt-12 self-bottom text-xl text-white">
             Made by: <a className="hover:text-gray-200" href="https://github.com/miamilemon" target="_blank">Nikodem M</a>
             </h6>
         </div>
     );
 }
 
-
 function Gra(poziom) {
     var mapa = Mapa[poziom]
     root.render(
         <div className="flex flex-col justify-center items-center bg-teal-800 h-[100vh]">
             <div className="flex flex-row items-start text-left justify-start max-w-[450px] w-full">
-                <button onClick={()=>Menu()} className="self-start mr-4 rounded-xl bg-gradient-to-b from-teal-300 to-teal-500 px-3 py-3 text-base font-bold text-white transition duration-200 hover:shadow-lg hover:shadow-teal-700">
+                <button onClick={()=>WybierzPoziom()} className="self-start mr-4 rounded-xl bg-gradient-to-b from-teal-500 to-teal-700 px-3 py-3 text-base font-bold text-white transition duration-200 hover:shadow-md hover:shadow-teal-700">
                       Powrót
+                </button>
+                <button onClick={()=>Gra(poziom)} className="self-start mr-4 rounded-xl bg-gradient-to-b from-teal-500 to-teal-700 px-3 py-3 text-base font-bold text-white transition duration-200 hover:shadow-md hover:shadow-teal-700">
+                      Restart
                 </button>
                 <div className="float-left">
                     <h1 className="drop-shadow-xl text-md font-bold text-white">Czas: </h1>
