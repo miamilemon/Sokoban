@@ -1,18 +1,41 @@
 import './App.css';
 import React from 'react';
-import ReactDOM from 'react-dom';
 import * as ReactDOMClient from 'react-dom/client';
 const container = document.getElementById("root");
 const root = ReactDOMClient.createRoot(container);
 
+//Mapy poszczegolnych poziomow gry
+//Jaki numer odpowiada jakiemu elementowi mapy
+//0=podloga, 1=sciana, 2=blok, 3=gracz, 4=pole do ustawienia bloku
+const Mapa = [
+    [
+        [1, 1, 1, 1, 1, 1, 1, 1],
+        [1, 4, 1, 1, 0, 0, 0, 1],
+        [1, 0, 1, 0, 0, 0, 1, 1],
+        [1, 0, 0, 0, 1, 0, 0, 1],
+        [1, 1, 1, 1, 4, 0, 0, 1],
+        [1, 3, 0, 1, 1, 0, 1, 1],
+        [1, 0, 0, 0, 0, 0, 0, 1],
+        [1, 1, 1, 1, 1, 1, 1, 1],
+    ],
+    [
+
+    ],
+    [
+
+    ],
+    [
+
+    ],
+    [
+
+    ]
+]
+
 var poziom = "";
 
 function Menu(){
-    if(localStorage.getItem("poziom")==null){
-        poziom = "1";
-    }else{
-        poziom = localStorage.getItem("poziom");
-    }
+    //renderujemy
     root.render(
         <div className="flex flex-col justify-center items-center bg-teal-800 h-[100vh]">
             <div className=" relative flex flex-col rounded-[20px] max-w-[300px] bg-teal-900 bg-clip-border shadow-3xl shadow-shadow-xl flex flex-col w-full !p-6 3xl:p-![18px] undefined">
@@ -20,7 +43,8 @@ function Menu(){
                   <h4 className="pb-8 self-center drop-shadow-xl text-2xl font-bold text-white">
                       Sokoban
                   </h4>
-                  <button onClick={()=>Gra(poziom)} className="rounded-xl bg-gradient-to-b from-teal-100 to-teal-300 px-5 py-3 text-base mb-3 font-medium text-white transition duration-200 hover:shadow-lg hover:shadow-teal-700">
+
+                  <button onClick={()=>WybierzPoziom()} className="rounded-xl bg-gradient-to-b from-teal-100 to-teal-300 px-5 py-3 text-base mb-3 font-medium text-white transition duration-200 hover:shadow-lg hover:shadow-teal-700">
                       Graj
                   </button>
                   <button onClick={()=>ListaWynikow()} className="rounded-xl bg-gradient-to-b from-teal-300 to-teal-500 px-5 py-3 text-base mb-3 font-medium text-white transition duration-200 hover:shadow-lg hover:shadow-teal-700">
@@ -39,12 +63,17 @@ function Menu(){
 }
 
 function PobierzWynik(ktory){
+    //tworzymy sobie zmienna ktora pozniej zwrocimy :)
     var wynik = "";
+    //sprawdzamy czy istnieje dana wartosc u nas w localstorage
     if(localStorage.getItem(ktory)==null){
+        //jak nie istnieje to przypisujemy sobie pusty wynik
         wynik = "----";
     }else{
+        //a jak jest to przypisujemy wartosc z localstorage
         wynik = localStorage.getItem(ktory);
     }
+    //zwracamy to co nam wyszlo
     return(
         wynik
     );
@@ -55,7 +84,7 @@ function ListaWynikow(){
             <div className="flex flex-col justify-center items-center bg-teal-800 h-[100vh]">
                 <div className=" relative flex flex-col rounded-[20px] max-w-[300px] bg-teal-900 bg-clip-border shadow-3xl shadow-shadow-xl flex flex-col w-full !px-6 3xl:p-![12px] undefined">
                   <div className="h-full w-full mt-5 flex flex-col my-6"> 
-                      <h1 className="pb-6 self-center drop-shadow-xl text-3xl font-bold text-white">
+                      <h1 className="pb-6 self-center drop-shadow-xl text-2xl font-bold text-white">
                           Wyniki
                       </h1>
                       <ol>
@@ -107,7 +136,11 @@ function ListaWynikow(){
     );
 }
 
-function Gra() {
+function WybierzPoziom(){
+
+}
+
+function Gra(poziom) {
     return (
         console.log(poziom+"testest")
     );
