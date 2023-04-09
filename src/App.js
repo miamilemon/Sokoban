@@ -10,11 +10,11 @@ const root = ReactDOMClient.createRoot(container);
 const Mapa = [
     [//Mapa poziomu 1
         [1, 1, 1, 1, 1, 1, 1, 1],
-        [1, 4, 1, 1, 0, 0, 0, 1],
-        [1, 0, 1, 0, 0, 0, 1, 1],
-        [1, 0, 0, 0, 1, 0, 0, 1],
-        [1, 1, 1, 1, 4, 0, 0, 1],
-        [1, 3, 0, 1, 1, 0, 1, 1],
+        [1, 4, 0, 0, 0, 0, 0, 1],
+        [1, 0, 1, 0, 1, 0, 0, 1],
+        [1, 0, 0, 1, 1, 2, 1, 1],
+        [1, 1, 1, 4, 0, 0, 0, 1],
+        [1, 3, 1, 1, 1, 2, 0, 1],
         [1, 0, 0, 0, 0, 0, 0, 1],
         [1, 1, 1, 1, 1, 1, 1, 1],
     ],
@@ -32,8 +32,30 @@ const Mapa = [
     ]
 ]
 
-function RenderMapy(ktora){
-    //const stanMapy = Mapa[ktora].map
+const Template = [
+    "box-content bg-teal-700 max-h-6 max-w-6 w-max h-max p-6 border-4 border-teal-800",
+    "box-content bg-stone-600 max-h-6 max-w-6 w-max h-max p-6 border-4 border-stone-700",
+    "box-content bg-yellow-600 max-h-6 max-w-6 w-max h-max p-6 border-4 border-stone-800",
+    "box-content bg-indigo-500 max-h-6 max-w-6 w-max h-max p-6 border-4 border-indigo-700",
+    "box-content bg-red-800 max-h-6 max-w-6 w-max h-max p-6 border-4 border-red-900"
+]
+
+const renderMapy = (bloki) => {
+    return bloki.map(blok => <div className={blok}></div>)
+  }
+
+function RenderMapy(mapa){
+    var string = [];
+    var pomoc = 0;
+    for(let i = 0; i<8; i++){
+        for(let z=0; z<8; z++){
+            string[pomoc] = Template[mapa[i][z]];
+            pomoc++;
+        }
+    }
+    return(
+        renderMapy(string)
+    );
 }
 
 function Menu(){
@@ -143,10 +165,11 @@ function WybierzPoziom(){
 }
 
 function Gra(poziom) {
+    var mapa = Mapa[0]
     root.render(
         <div className="flex flex-col justify-center items-center bg-teal-800 h-[100vh]">
             <div className="flex flex-row items-start text-left justify-start max-w-[450px] w-full">
-                <button onClick={()=>Menu()} className="self-start mr-4 rounded-xl bg-gradient-to-b from-teal-300 to-teal-500 px-3 py-3 text-base font-medium text-white transition duration-200 hover:shadow-lg hover:shadow-teal-700">
+                <button onClick={()=>Menu()} className="self-start mr-4 rounded-xl bg-gradient-to-b from-teal-300 to-teal-500 px-3 py-3 text-base font-bold text-white transition duration-200 hover:shadow-lg hover:shadow-teal-700">
                       Powrót
                 </button>
                 <div className="float-left">
@@ -154,8 +177,8 @@ function Gra(poziom) {
                     <h1 className="pb-2 drop-shadow-xl text-md font-bold text-white"> Ilość kroków: </h1>
                 </div>
             </div>
-            <div className=" relative flex flex-col rounded-[20px] max-w-[500px] max-h-[500px] bg-teal-900 bg-clip-border shadow-3xl shadow-shadow-xl flex flex-col h-full w-full !p-6 3xl:p-![18px] undefined">
-              
+            <div className="grid grid-row-8 grid-cols-8 items-center justify-center rounded-[20px] max-w-[500px] max-h-[500px] bg-teal-900 bg-clip-border shadow-3xl shadow-shadow-xl h-full w-full !p-6 3xl:p-![18px] undefined">
+                {RenderMapy(mapa)}
             </div>
         </div>
     );
@@ -163,7 +186,7 @@ function Gra(poziom) {
 
 function App() {
     //Menu();
-    Gra(1);
+    Gra(0);
 }
 
 export default App;
