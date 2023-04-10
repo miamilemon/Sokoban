@@ -59,7 +59,9 @@ const Mapa = [
         [1, 1, 1, 1, 1, 1, 1, 1]
     ]
 ]
-
+//Kazdy indeks elementu tablicy odpowiada odpowiedniemu elementowi gry
+//Zawartosc tablicy to design tailwind dzieki ktoremu klocki wygladaja jak wygladaja
+//Pozniej ta zawartosc jest uzywana do renderu mapy
 const Template = [
     "box-content bg-teal-700 max-h-6 max-w-6 w-max h-max p-6 border-4 border-teal-800",
     "box-content bg-stone-600 max-h-6 max-w-6 w-max h-max p-6 border-4 border-stone-700",
@@ -68,20 +70,26 @@ const Template = [
     "box-content bg-red-800 max-h-6 max-w-6 w-max h-max p-6 border-4 border-red-900"
 ]
 
+//Zamiana tablicy na divy, 1 element = 1 obiekt; uzywane w funkcji RenderMapy
 const renderMapy = (bloki) => {
     return bloki.map(blok => <div className={blok}></div>)
 }
 
+//Funkcja do wyswietlania mapy
 function RenderMapy(mapa){
     var string = [];
+    //Zmienna okreslajaca ktory element jest dodawany
     var pomoc = 0;
+    //Przechodzimy przez
     for(let i = 0; i<8; i++){
         for(let z=0; z<8; z++){
+            //Uzupelniamy tablice ktora pozniej jest przekazywania do mapowania
             string[pomoc] = Template[mapa[i][z]];
             pomoc++;
         }
     }
     return(
+        //Mapowanie tablicy w celu wyswietlenia mapy
         renderMapy(string)
     );
 }
