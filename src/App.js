@@ -7,7 +7,7 @@ const root = ReactDOMClient.createRoot(container);
 //Mapy poszczegolnych poziomow gry w postaci tablicy 3d
 //Jaki numer odpowiada jakiemu elementowi mapy
 //0=podloga, 1=sciana, 2=blok, 3=gracz, 4=pole do ustawienia bloku
-const Mapa = [
+var Mapa = [
     [//Mapa poziomu 1
         [1, 1, 1, 1, 1, 1, 1, 1],
         [1, 4, 0, 0, 0, 0, 0, 1],
@@ -205,19 +205,19 @@ function WybierzPoziom(){
                       Sokoban
                   </h4>
 
-                  <button onClick={()=>Gra(0)} className="rounded-xl bg-gradient-to-b from-teal-300 to-teal-500 px-5 py-3 text-base mb-3 font-medium text-white transition duration-200 hover:shadow-lg hover:shadow-teal-700">
+                  <button onClick={()=>Gra(Mapa[0])} className="rounded-xl bg-gradient-to-b from-teal-300 to-teal-500 px-5 py-3 text-base mb-3 font-medium text-white transition duration-200 hover:shadow-lg hover:shadow-teal-700">
                       Poziom 1
                   </button>
-                  <button onClick={()=>Gra(1)} className="rounded-xl bg-gradient-to-b from-teal-300 to-teal-500 px-5 py-3 text-base mb-3 font-medium text-white transition duration-200 hover:shadow-lg hover:shadow-teal-700">
+                  <button onClick={()=>Gra(Mapa[1])} className="rounded-xl bg-gradient-to-b from-teal-300 to-teal-500 px-5 py-3 text-base mb-3 font-medium text-white transition duration-200 hover:shadow-lg hover:shadow-teal-700">
                       Poziom 2
                   </button>
-                  <button onClick={()=>Gra(2)} className="rounded-xl bg-gradient-to-b from-teal-300 to-teal-500 px-5 py-3 text-base mb-3 font-medium text-white transition duration-200 hover:shadow-lg hover:shadow-teal-800">
+                  <button onClick={()=>Gra(Mapa[2])} className="rounded-xl bg-gradient-to-b from-teal-300 to-teal-500 px-5 py-3 text-base mb-3 font-medium text-white transition duration-200 hover:shadow-lg hover:shadow-teal-800">
                       Poziom 3
                   </button>
-                  <button onClick={()=>Gra(3)} className="rounded-xl bg-gradient-to-b from-teal-300 to-teal-500 px-5 py-3 text-base mb-3 font-medium text-white transition duration-200 hover:shadow-lg hover:shadow-teal-800">
+                  <button onClick={()=>Gra(Mapa[3])} className="rounded-xl bg-gradient-to-b from-teal-300 to-teal-500 px-5 py-3 text-base mb-3 font-medium text-white transition duration-200 hover:shadow-lg hover:shadow-teal-800">
                       Poziom 4
                   </button>
-                  <button onClick={()=>Gra(4)} className="rounded-xl bg-gradient-to-b from-teal-300 to-teal-500 px-5 py-3 text-base mb-3 font-medium text-white transition duration-200 hover:shadow-lg hover:shadow-teal-800">
+                  <button onClick={()=>Gra(Mapa[4])} className="rounded-xl bg-gradient-to-b from-teal-300 to-teal-500 px-5 py-3 text-base mb-3 font-medium text-white transition duration-200 hover:shadow-lg hover:shadow-teal-800">
                       Poziom 5
                   </button>
                   <button onClick={()=>Menu()} className="rounded-xl bg-gradient-to-b from-teal-500 to-teal-700 px-5 py-3 text-base mb-3 font-medium text-white transition duration-200 hover:shadow-lg hover:shadow-teal-800">
@@ -232,15 +232,42 @@ function WybierzPoziom(){
     );
 }
 
-function Gra(poziom) {
-    var mapa = Mapa[poziom]
+function Gra(mapa) {
+    var y = 0;
+    var x = 0;
+    for(y = 0; y<8; y++){
+        for(x = 0; x<8; x++){
+            if(mapa[y][x]===3){
+                console.log(y,x)
+                break;
+            }
+
+        }
+    }
+
+    document.addEventListener("keydown", event => {
+        if (event.key === "d" || event.key === "ArrowRight") {
+          console.log("prawo"); 
+          return;
+        }else if (event.key === "a" || event.key === "ArrowLeft") {
+            console.log("lewo")
+            return;
+        }else if (event.key === "ArrowUp" || event.key === "w") {
+            console.log("gora")
+            return;
+        }else if (event.key === "ArrowDown" || event.key === "s") {
+            console.log("dol")
+            return;
+        }
+        //0=podloga, 1=sciana, 2=blok, 3=gracz, 4=pole do ustawienia bloku
+      });
     root.render(
         <div className="flex flex-col justify-center items-center bg-teal-800 h-[100vh]">
             <div className="flex flex-row items-start text-left justify-start max-w-[450px] w-full">
                 <button onClick={()=>WybierzPoziom()} className="self-start mr-4 rounded-xl bg-gradient-to-b from-teal-500 to-teal-700 px-3 py-3 text-base font-bold text-white transition duration-200 hover:shadow-md hover:shadow-teal-700">
                       Powrót
                 </button>
-                <button onClick={()=>Gra(poziom)} className="self-start mr-4 rounded-xl bg-gradient-to-b from-teal-500 to-teal-700 px-3 py-3 text-base font-bold text-white transition duration-200 hover:shadow-md hover:shadow-teal-700">
+                <button onClick={()=>Gra(mapa,)} className="self-start mr-4 rounded-xl bg-gradient-to-b from-teal-500 to-teal-700 px-3 py-3 text-base font-bold text-white transition duration-200 hover:shadow-md hover:shadow-teal-700">
                       Restart
                 </button>
                 <div className="float-left">
