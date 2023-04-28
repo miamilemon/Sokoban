@@ -17,3 +17,22 @@ Według moich założeń:
 - Gracz może popychać pudła, ale nie może ich ciągnąć
 - Mapy 8x8
 - 2 bloki do odstawienia do 2 punktów
+
+## Jak działa gra
+
+#Design
+Warstwa użytkowa i rozgrywki jest wykonana za pomocą framework CSS, tailwindcss.
+
+#Start
+Na samym początku pogram uruchamia funkcje Menu.
+Funkcja Menu:
+- renderuje przycisk Graj
+- renderuje przycisk Wyniki
+- renderuje przycisk O grze
+
+#Przycisk - O grze
+Po naciśnięciu przycisku o nazwie: "O grze", przeglądarka w nowym oknie otwiera plik readme.md, czyli ten właśnie.
+
+#Przycisk - Wyniki
+Po naciśnięciu przycisku o nazwie: "Wyniki", uruchomiona zostaje funkcja ListaWynikow, która:
+-
