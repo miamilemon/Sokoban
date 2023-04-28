@@ -20,19 +20,34 @@ Według moich założeń:
 
 ## Jak działa gra
 
-#Design
+### Design
 Warstwa użytkowa i rozgrywki jest wykonana za pomocą framework CSS, tailwindcss.
 
-#Start
+### Start
 Na samym początku pogram uruchamia funkcje Menu.
 Funkcja Menu:
 - renderuje przycisk Graj
 - renderuje przycisk Wyniki
 - renderuje przycisk O grze
 
-#Przycisk - O grze
+### Przycisk - O grze
 Po naciśnięciu przycisku o nazwie: "O grze", przeglądarka w nowym oknie otwiera plik readme.md, czyli ten właśnie.
 
-#Przycisk - Wyniki
+### Przycisk - Wyniki
 Po naciśnięciu przycisku o nazwie: "Wyniki", uruchomiona zostaje funkcja ListaWynikow, która:
--
+- renderuje widok dla listy wyników i uzupełnia wartości za pomocą funkcji PobierzWynik() z parametrem, który określa jaki element z localstorage ta funkcja pobierze i zwróci
+
+### Przycisk - Graj
+Po naciśnięciu przycisku o nazwie: "Graj", uruchomiona zostaje funkcja WybierzPoziom(), która:
+- renderuje widok wyboru poziomu (5 przycisków z opisem, który to poziom(np. Poziom 4)) i przycisk "Powrót", który uruchamia funkcje Menu()
+
+### Przycisk - Poziom [numer]
+Po naciśnięciu przycisku o nazwie: "Poziom [numer poziomu]", uruchomiona zostaje funkcja Gra() z parametrem, którym jest Mapa
+
+### Tablica - Mapa
+Tablica tablic, która zawiera 8 8-elementowych tablic, służy jako plansza gry
+Poszczególne numery w tablicy odpowiadają:
+0 = podłoga, 1 = ściana, 2 = blok, 3 = gracz, 4 = pole do ustawienia bloku
+
+### Tablica - Template
+
