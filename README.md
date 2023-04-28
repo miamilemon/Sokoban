@@ -44,12 +44,15 @@ Po naciśnięciu przycisku o nazwie: "Graj", uruchomiona zostaje funkcja Wybierz
 ### Przycisk - Poziom [numer]
 Po naciśnięciu przycisku o nazwie: "Poziom [numer poziomu]", uruchomiona zostaje funkcja Gra() z parametrem, którym jest Mapa
 Funkcja Gra() renderuje widok mapy i korzysta z funkcji RenderMapy() z parametrem, którym jest mapa.
-Funkcja ta następnie
+Funkcja ta następnie zwraca wartość przy pomocy stałej renderMapy (opis poniżej) i zwrócona wartość (mapa gry) pojawia się na ekranie gry
 
 ### Tablica - Mapa
 Tablica tablic, która zawiera 8 8-elementowych tablic, służy jako plansza gry
 Poszczególne numery w tablicy odpowiadają:
 0 = podłoga, 1 = ściana, 2 = blok, 3 = gracz, 4 = pole do ustawienia bloku
+
+### Stała - renderMapy
+Przerabia za pomocą funkcji strzałkowej, tablice z elementami mapy na div bloku
 
 ### Tablica - Template
 Tablica, której poszczególne indeksy odpowiadają elementowi gry jak w przypadku tablicy Mapa
